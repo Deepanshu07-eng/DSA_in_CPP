@@ -15,7 +15,7 @@ int main(){
 
     if (x > 0) {
         while (x > 0) {
-            cout << "E ";
+            cout << "E";
             x--;
         }
     }
