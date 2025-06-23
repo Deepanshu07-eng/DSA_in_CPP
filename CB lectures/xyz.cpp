@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-    int n,row;
+    int n,row,spaces;
     cin >>n;
 
     row =1;
