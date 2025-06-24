@@ -10,7 +10,6 @@ int Lararray(int a[],int n){
             lar = a[i];
 
         }
-        
     }
     return lar;
 
