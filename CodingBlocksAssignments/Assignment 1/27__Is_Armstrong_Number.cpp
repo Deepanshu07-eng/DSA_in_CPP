@@ -13,3 +13,30 @@ abcd… = pow(a,n) + pow(b,n) + pow(c,n) + pow(d,n) + ….
 371 is an Armstrong number as 371 = 3^3 + 7^3 + 1^3
 */
 
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+int main(){
+    int num;
+    cin>>num;
+
+    int original = num,temp =num, n=0, sum=0;
+
+    if(n<0 || n> 1000000000) return 0;
+    
+    while(temp>0){
+        temp/= 10;
+        n++;
+    }
+    temp = num;
+    while(temp>0){
+        int digit =temp % 10;
+        sum += pow(digit,n);
+        temp /= 10;
+    }
+
+    cout<<(sum == original ? "true" : "false")<<endl;
+
+    return 0;
+}
