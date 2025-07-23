@@ -1,3 +1,13 @@
+/*
+if i give n=5 ;
+this will be the output:-
+
+1****
+12***
+123**
+1234*
+12345*/
+
 #include<iostream>
 using namespace std;
 

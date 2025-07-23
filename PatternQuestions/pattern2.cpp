@@ -1,3 +1,13 @@
+/*
+N= 5
+* * * * * 
+ * * * *
+  * * *
+   * *
+    * 
+*/
+
+
 #include<iostream>
 using namespace std;
 
@@ -9,7 +19,7 @@ int main () {
 		for(int j=0; j<i; j++){
             cout<<" ";
 		}
-        for(int stars=1; stars<n-i; ++stars ){
+        for(int stars=0; stars<n-i; ++stars ){
             cout<<"* ";
         }
         cout<<endl;
