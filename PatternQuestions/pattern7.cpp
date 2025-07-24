@@ -6,7 +6,8 @@ this will be the output:-
 12***
 123**
 1234*
-12345*/
+12345
+*/
 
 #include<iostream>
 using namespace std;
