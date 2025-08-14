@@ -51,7 +51,8 @@ int main() {
     if (canEscape && S >= K) {
         cout << "Yes" << endl;
         cout << S << endl;
-    } else {
+    }
+    else {
         cout << "No" << endl;
     }
 
