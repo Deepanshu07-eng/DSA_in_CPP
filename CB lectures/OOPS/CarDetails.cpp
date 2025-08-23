@@ -4,7 +4,7 @@ using namespace std;
 
 ///////////////////____________BLUEPRINT____________///////////////////
 class car{
-public:
+    public:
     char name[100];
     int price;
     int model;
