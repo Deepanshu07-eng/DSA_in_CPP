@@ -20,3 +20,58 @@ Since multiple solutions may exist, the goal is to find the maximum number of CB
 Kanak Bhaiya has a class of Launchpad students to teach and needs help solving this challenge. Assist him in finding the solution.
 */
 
+#include<iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int CBprimes[] = {2,3,5,7,11,13,17,19,23,29};
+
+long long toNum(string &s, int start, int end){
+    long long num = 0;
+    for(int i = start; i <= end; i++){
+        num = num * 10 + (s[i]-'0');
+    }
+    return num;
+}
+
+bool isCB(long long num){
+    if(num == 0 || num == 1) return false;
+    for(int p : CBprimes){
+        if(num == p) return true;
+    }
+    for(int p : CBprimes){
+        if(num % p == 0) return false;
+    }
+    return true;
+}
+
+bool isValid(int start, int end, vector<bool>& visited){
+    for(int i = start; i <= end; i++){
+        if(visited[i]) return false;
+    }
+    return true;
+}
+
+int main(){
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+
+    vector<bool> visited(n,false);
+    int ans = 0;
+
+    for(int len = 1; len <= n; len++){
+        for(int i = 0; i + len - 1 < n; i++){
+            int j = i + len - 1;
+            long long num = toNum(s,i,j);
+            if(isCB(num) && isValid(i,j,visited)){
+                ans++;
+                for(int k = i; k <= j; k++) visited[k] = true;
+            }
+        }
+    }
+    cout << ans;
+    return 0;
+}
