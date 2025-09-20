@@ -129,6 +129,17 @@ void levelOrderPrint(node* root){
     }
 
 }
+void mirror(node* root){
+    if(!root){
+        return;
+
+
+    }
+    swap(root->left, root->right);
+    mirror(root->left);
+    mirror(root-> right);
+
+}
 //8 10 1 -1 -1 6 4 -1 -1 7 -1 -1 3 -1 14 13 -1 -1 -1
 int main() {
     cout<<"Enter input: ";
@@ -160,6 +171,11 @@ int main() {
     else cout<<"Not Present"<<endl;
 
     cout<<"Level order: \n";
+    levelOrderPrint(root);
+
+    mirror(root);
+
+    cout<<"level order: \n";
     levelOrderPrint(root);
     return 0;
 }
