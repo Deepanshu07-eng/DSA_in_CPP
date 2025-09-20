@@ -10,6 +10,11 @@ public:
         left = right=NULL;
     }
 };
+class Pair {
+    public:
+    int height;
+    int dia;
+};
 node* buildTree(){
     int d;
     cin>>d;
@@ -67,6 +72,27 @@ int diameter(node* root){
     return max(op1, max(op2,op3));
 
 }
+
+Pair fastDiameter(node* root) {
+    Pair p;
+    if (!root) {
+        p.height = p.dia = 0;
+        return p;
+    }
+
+    Pair left = fastDiameter(root->left);
+    Pair right = fastDiameter(root->right);
+
+    p.height = max(left.height, right.height) +1;
+
+    int op1 = left.height + right.height;
+    int op2 = left.dia;
+    int op3 = right.dia;
+
+    p.dia = max(op1, max(op2, op3));
+
+    return p;
+}
 //8 10 1 -1 -1 6 4 -1 -1 7 -1 -1 3 -1 14 13 -1 -1 -1
 int main() {
     cout<<"Enter input: ";
@@ -86,5 +112,9 @@ int main() {
     cout<<"Total nodes = "<<countNode(root)<<endl;
     cout<<"Tree Height = "<<height(root)<<endl;
     cout<<"Tree Diameter = "<<diameter(root)<<endl;
+
+    Pair p = fastDiameter(root);
+    cout<<"Fast height = "<<p.height<<endl;
+    cout<<"Fast Diameter = "<<p.dia<<endl;
     return 0;
 }
