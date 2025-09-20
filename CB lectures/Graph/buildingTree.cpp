@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 
 class node {
@@ -105,6 +106,29 @@ node* searchNode(node* root, int key){
     return searchNode(root->right, key);
 
 }
+void levelOrderPrint(node* root){
+    queue<node*>q;
+    q.push(root);
+    q.push(NULL);
+
+    while(!q.empty()){
+        node* x= q.front();
+        q.pop();
+        if(x != NULL){
+            cout<<x->data<<" ";
+            if(x->left != NULL) q.push(x->left);
+
+            if(x->right != NULL) q.push(x->right);
+
+            
+        }
+        else{
+            cout<<'\n';
+            if(!q.empty()) q.push(NULL);
+        }
+    }
+
+}
 //8 10 1 -1 -1 6 4 -1 -1 7 -1 -1 3 -1 14 13 -1 -1 -1
 int main() {
     cout<<"Enter input: ";
@@ -128,8 +152,14 @@ int main() {
     Pair p = fastDiameter(root);
     cout<<"Fast height = "<<p.height<<endl;
     cout<<"Fast Diameter = "<<p.dia<<endl;
+
+    cout<<"Level order: \n";
+    levelOrderPrint(root);
     
     if(searchNode(root, 5)) cout<<"Key Found"<<endl;
     else cout<<"Not Present"<<endl;
+
+    cout<<"Level order: \n";
+    levelOrderPrint(root);
     return 0;
 }
