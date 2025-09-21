@@ -89,16 +89,51 @@ void levelOrderPrint(node* root) {
 	}
 }
 
+void printRange(node* root, int k1, int k2){
+    if( !root) return;
+    if( root -> data >= k1){
+        printRange(root->left, k1, k2);
+    }
+    if( root -> data >= k1 and root-> data <= k2 )
+     {
+        cout<<root->data<<" ";
+    }
+    if(root-> data <= k2){
+        printRange(root-> right, k1, k2);
+    }
+    
+}
+
+node* searchBST(node* root, int key){
+    if(!root){
+        return NULL;
+    }
+    if(root -> data == key){
+        return root;
+
+    }
+    else if ( root -> data > key){
+        return searchBST(root->left, key);
+    }
+    else{
+        return searchBST(root->right, key);
+    }
+}
+
 int main() {
 
 	node* root = createBST();
-	preOrder(root);
+    printRange(root, 5, 10);
+    node* ans = searchBST(root, 5);
+    if (ans) cout<<"Data Found"<<endl;
+    else cout<<"Not Found"<<endl;
+	/*preOrder(root);
 	cout << endl;
 	inOrder(root);
 	cout << endl;
 	postOrder(root);
 	cout << endl;
-	levelOrderPrint(root);
+	levelOrderPrint(root);*/
 
 	return 0;
 }
