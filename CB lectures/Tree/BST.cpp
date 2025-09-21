@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include<climits>
 using namespace std;
 
 class node {
@@ -120,6 +121,42 @@ node* searchBST(node* root, int key){
     }
 }
 
+bool isBST(node* root, int mi = INT_MIN, int mx = INT_MAX)
+{
+    if(!root) return true;
+
+    if(root -> data >= mi and root -> data <= mx and isBST(root->left) and isBST(root->right)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+class Pair{
+public:
+    int height;
+    bool balanced;
+
+};
+Pair isBalanced(node* root){
+    Pair p;
+    if( !root){
+        p.height = 0;
+        p.balanced = true;
+        return p;
+    }
+    Pair left = isBalanced(root->left);
+    Pair right = isBalanced(root -> right);
+    p.height = max(left.height, right.height)+1;
+    if(abs(left.height - right.height) <= 1 and left.balanced and right.balanced){
+        p.balanced = true;
+    }
+    else{
+        p.balanced = false;
+    }
+    return p;
+}
 int main() {
 
 	node* root = createBST();
@@ -127,6 +164,10 @@ int main() {
     node* ans = searchBST(root, 5);
     if (ans) cout<<"Data Found"<<endl;
     else cout<<"Not Found"<<endl;
+
+    Pair p = isBalanced(root);
+    if (p.balanced) cout<<"Balanced"<<endl;
+    else cout<<"Not balanced"<<endl;
 	/*preOrder(root);
 	cout << endl;
 	inOrder(root);
