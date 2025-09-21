@@ -140,13 +140,34 @@ void mirror(node* root){
     mirror(root-> right);
 
 }
+int pre[] = {8,10,1,6,4,7,3,14,13};
+int k=0;
+
+node* createTree(int *in, int s, int e){
+    if (s>e) return NULL;
+
+    node* root  = new node(pre[k++]);
+    int j;
+    for(int i=s; i<=e; i++ ){
+        if(in[i] == root -> data){
+            j=i;
+            break;
+        }
+    }
+    root -> left = createTree(in, s, j-1);
+    root -> right = createTree(in, j+1, e);
+    return root;
+
+}
 //8 10 1 -1 -1 6 4 -1 -1 7 -1 -1 3 -1 14 13 -1 -1 -1
 int main() {
-    cout<<"Enter input: ";
-    
-    node* root = buildTree();
+    int in[]= {1, 10, 4, 6, 7,8,3,13,14};
+    int n= sizeof(in)/sizeof(int);
 
-    cout<<"Preorder:";
+    node* root = createTree(in, 0, n-1);
+
+
+    /*cout<<"Preorder:";
     preOrder(root);
     cout<<endl;
     cout<<"Inorder: ";
@@ -174,7 +195,7 @@ int main() {
     levelOrderPrint(root);
 
     mirror(root);
-
+*/
     cout<<"level order: \n";
     levelOrderPrint(root);
     return 0;
