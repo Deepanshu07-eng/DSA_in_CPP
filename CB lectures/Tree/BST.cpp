@@ -157,6 +157,7 @@ Pair isBalanced(node* root){
     }
     return p;
 }
+//8 3 10 1 6 14 4 7 13 -1 
 int main() {
 
 	node* root = createBST();
