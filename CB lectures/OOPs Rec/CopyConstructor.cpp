@@ -28,7 +28,16 @@ public:
 
     }
 
+    // COPY CONSTRUCTOR : Ek object se doosra object create krna
+    car(car &X) {
+        strcpy(name, X.name);
+        price = X.price;
+        model = X.model;
+        seats = X.seats;
 
+          
+
+    }
 
     // Members Functions //
     void print(){
@@ -52,9 +61,14 @@ int main(){
     A.seats = 4;
 
     car B("Maruti", 10000000, 2022, 5);  // It will call parameterised Constructor
+    car C("Audi", 42100000, 2024, 2);
 
+    // Calling copy constructor
+    car D = C; // or Car D(C);
 
     A.print();
     B.print();
+    C.print();
+    D.print();
 
 }
