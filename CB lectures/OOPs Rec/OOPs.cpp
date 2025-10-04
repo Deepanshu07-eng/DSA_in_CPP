@@ -11,9 +11,37 @@ public:
     int model;
     int seats;
 
+    // Members Functions //
+    void print(){
+        cout<<"Name   :"<<name<<endl;
+        cout<<"Price  :"<<price<<endl;
+        cout<<"Model  :"<<model<<endl;
+        cout<<"Seats  :"<<seats<<endl<<endl;
+
+    }
+
 };
 
 int main(){
+
+    car A; // A is an object of class CAR
+    // A ke variables ko use krne ke liye we use DOT Operator
+    strcpy(A.name, "RR");
+    A.price = 70000000;
+    A.model = 2025;
+    A.seats = 4;
+
+    A.print();
+
+    car B; 
+    strcpy(B.name, "Dodge Challenger");
+    B.price = 24000000;
+    B.model = 2023;
+    B.seats = 2;
+
+    B.print();
+
+    /*
     car A; // A is an object of class CAR
     // A ke variables ko use krne ke liye we use DOT Operator
     strcpy(A.name, "RR");
@@ -36,6 +64,7 @@ int main(){
     cout<<"Price  :"<<B.price<<endl;
     cout<<"Model  :"<<B.model<<endl;
     cout<<"Seats  :"<<B.seats<<endl;
+    */
 
     return 0;
 }
