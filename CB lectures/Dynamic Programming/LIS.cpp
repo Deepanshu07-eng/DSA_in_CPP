@@ -1,0 +1,31 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int a[] = {10, 9, 3, 5, 4, 11, 7, 8};
+    int n = sizeof(a) / sizeof(int);
+
+    int dp[100] = {0};
+
+    for (int i = 0; i < n; i++)
+        dp[i] = 1;
+
+    for (int i = 1; i < n; i++) {
+        for (int j = 0; j < i; j++) {
+            if (a[j] < a[i]) {    
+                dp[i] = max(dp[i], dp[j] + 1);
+            }
+        }
+    }
+
+
+    int ans = 0;
+    for (int i = 0; i < n; i++) {
+        ans = max(ans, dp[i]);
+    }
+
+    cout << "Length of Longest Increasing Subsequence: " << ans << endl;
+
+    return 0;
+}
