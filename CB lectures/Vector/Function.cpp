@@ -15,8 +15,7 @@ int main() {
 
     vec.pop_back();                     // Pop_Back Function
 
-    for(char val : vec){  // for each loop
-        cout<<val<<endl;
-    }
+    cout<< vec.front() << endl;        // Front Function
+    cout<< vec.back() << endl;        // back Function
     return 0;
 }
