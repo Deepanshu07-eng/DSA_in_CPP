@@ -16,6 +16,8 @@ int main() {
     vec.pop_back();                     // Pop_Back Function
 
     cout<< vec.front() << endl;        // Front Function
-    cout<< vec.back() << endl;        // back Function
+    cout<< vec.back() << endl;   
+    
+    cout<<vec.at(3) << endl;        // At Function  
     return 0;
 }
