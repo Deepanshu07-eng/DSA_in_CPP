@@ -51,7 +51,7 @@ int main() {
     cin >> s;
 
     vector<string> ans;
-    solve(s, 0, "a", ans);
+    solve(s, 0, "", ans);
 
     sort(ans.begin(), ans.end());
 
