@@ -23,3 +23,47 @@ Sample Output
 Explanation
 First we can swap 5 with 3 which gives us 5 4 1 2 3 and then we can swap 3 and 1 which gives us 5 4 3 2 1.
 */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int N;
+    long long K;
+    cin >> N >> K;
+
+    vector<int> arr(N);
+    vector<int> pos(N + 1);  // pos[value] = index
+
+    for (int i = 0; i < N; i++) {
+        cin >> arr[i];
+        pos[arr[i]] = i;
+    }
+
+    for (int i = 0; i < N && K > 0; i++) {
+        int desired = N - i;
+
+        // If already the correct maximum at this position
+        if (arr[i] == desired)
+            continue;
+
+        int swapIndex = pos[desired];
+
+        // Update positions in map
+        pos[arr[i]] = swapIndex;
+        pos[desired] = i;
+
+        // Perform swap
+        swap(arr[i], arr[swapIndex]);
+
+        K--;
+    }
+
+    for (int x : arr)
+        cout << x << " ";
+
+    return 0;
+}
