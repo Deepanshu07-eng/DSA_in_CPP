@@ -20,3 +20,28 @@ Sample Output
 13
 */
 
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+unordered_map<long long, long long> dp;
+
+long long solve(long long n) {
+    if (n == 0) return 0;
+    if (dp.count(n)) return dp[n];
+
+    long long change = solve(n / 2) + solve(n / 3) + solve(n / 4);
+    dp[n] = max(n, change);
+    return dp[n];
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    long long n;
+    if (!(cin >> n)) return 0;
+
+    cout << solve(n);
+    return 0;
+}
