@@ -33,3 +33,31 @@ Sample Output
 4
 */
 
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int amount;
+    cin >> amount;
+
+    int n;
+    cin >> n;
+
+    vector<int> coins(n);
+    for(int i = 0; i < n; i++) cin >> coins[i];
+
+    vector<int> dp(amount + 1, 0);
+    dp[0] = 1;
+
+    for(int coin : coins) {
+        for(int sum = coin; sum <= amount; sum++) {
+            dp[sum] += dp[sum - coin];
+        }
+    }
+
+    cout << dp[amount];
+    return 0;
+}
