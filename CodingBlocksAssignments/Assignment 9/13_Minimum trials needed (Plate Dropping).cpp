@@ -31,3 +31,32 @@ Sample Input
 Sample Output
 2
 */
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T;
+    cin >> T;
+
+    while(T--) {
+        int K, N;
+        cin >> K >> N;
+
+        vector<long long> dp(K + 1, 0);
+        int moves = 0;
+
+        while(dp[K] < N) {
+            moves++;
+            for(int i = K; i >= 1; i--) {
+                dp[i] = dp[i] + dp[i - 1] + 1;
+            }
+        }
+
+        cout << moves << "\n";
+    }
+
+    return 0;
+}
