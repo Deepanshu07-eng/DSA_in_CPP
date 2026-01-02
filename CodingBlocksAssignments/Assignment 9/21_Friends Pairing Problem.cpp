@@ -21,3 +21,29 @@ Sample Output
 4
 */
 
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t;
+    cin >> t;
+
+    vector<long long> dp(31);
+    dp[0] = 1;
+    dp[1] = 1;
+
+    for(int i = 2; i <= 30; i++) {
+        dp[i] = dp[i-1] + (i-1) * dp[i-2];
+    }
+
+    while(t--) {
+        int n;
+        cin >> n;
+        cout << dp[n] << "\n";
+    }
+
+    return 0;
+}
